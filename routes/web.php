@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index');
+
+Route::get('/','HtmlToPdfController@index');
+
+Route::group(['middleware' => 'auth', 'as'=>'admin.', 'prefix' => 'admin'], function() {
+    Route::get('htmltopdf/download/{id}','HtmlToPdfController@download')->name('htmltopdf.download');
+    Route::resource('htmltopdf', 'HtmlToPdfController');
 });

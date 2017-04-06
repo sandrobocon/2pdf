@@ -35,4 +35,7 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'wkhtmltopdf' => [
+        'path' =>   '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"'
+    ],
 ];

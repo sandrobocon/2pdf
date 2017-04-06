@@ -16,3 +16,9 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('cron_htmltopdf', function () {
+    $run = New \App\Http\Controllers\HtmlToPdfController;
+    $run->cron_job();
+})->describe('Exec html_cron_job');

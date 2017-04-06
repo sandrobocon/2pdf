@@ -23,7 +23,11 @@ class HtmlToPdfController extends Controller
      */
     public function index()
     {
-        $queue = htmltopdf_queue::orderBy('id','desc')->paginate(10);
+//        if (Auth::user()->id == '2') {
+//            $queue = htmltopdf_queue::orderBy('id','desc')->paginate(10);
+//        } else {
+            $queue = htmltopdf_queue::where('user_id',Auth::id())->orderBy('id','desc')->paginate(10);
+//        }
         return view('admin.htmltopdf.index', compact('queue'));
     }
 
@@ -39,7 +43,8 @@ class HtmlToPdfController extends Controller
             'url' => route('admin.htmltopdf.store'),
         ]);
         $title = 'Novo Processamento htmlToPdf';
-        return view('admin.htmltopdf.save', compact('form', 'title'));
+        $create = true;
+        return view('admin.htmltopdf.save', compact('form', 'title','create'));
     }
 
     /**
@@ -65,7 +70,9 @@ class HtmlToPdfController extends Controller
         $zipField = $form->getFieldValues()['zip'];
         if ($zipField->getClientOriginalExtension() != 'zip')
             return 'Arquivo invalido, use somente .zip';
-        $destinationPath = storage_path('app/htmltopdf/'.$hash);
+        $destinationPath = storage_path('app/htmltopdf');
+        if(!file_exists($destinationPath)) mkdir($destinationPath);
+        $destinationPath .= '/'.$hash;
         mkdir($destinationPath);
         if(!rename($zipField->getRealPath(),$destinationPath.'/'.$hash.'.zip')) {
             rmdir($destinationPath);
@@ -182,8 +189,8 @@ class HtmlToPdfController extends Controller
         }
 
         // Zip pdf files
-        $files = glob(storage_path('app/htmltopdf/'.$hash.'/pdf/*'));
-        $zipper->make('storage/app/htmltopdf/'.$hash.'/'.$hash.'-pdf.zip')->add($files)->close();
+        $files = glob(storage_path('app/htmltopdf/'.$hash.'/pdf/'));
+        $zipper->make(storage_path('app/htmltopdf/'.$hash.'/'.$hash.'-pdf.zip'))->add($files)->close();
 
         // Remove html and pdf folders
         File::deleteDirectory(storage_path('app/htmltopdf/'.$hash.'/html'));

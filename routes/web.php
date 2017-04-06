@@ -19,7 +19,7 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
 
-Route::get('/','HtmlToPdfController@index');
+Route::get('/','HtmlToPdfController@index')->middleware('auth');
 
 Route::group(['middleware' => 'auth', 'as'=>'admin.', 'prefix' => 'admin'], function() {
     Route::get('htmltopdf/download/{id}','HtmlToPdfController@download')->name('htmltopdf.download');

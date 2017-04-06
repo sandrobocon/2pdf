@@ -15,7 +15,7 @@ class CreateHtmltopdfQueuesTable extends Migration
     {
         Schema::create('htmltopdf_queues', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('hash');
+            $table->string('hash')->unique();
             $table->integer('status');
             $table->integer('user_id');
             $table->integer('file_name');

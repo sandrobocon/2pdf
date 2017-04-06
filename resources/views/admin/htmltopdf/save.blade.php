@@ -14,6 +14,12 @@
                 ])?>
                 {!! form($form) !!}
             </div>
+            @if(isset($create))
+            <div class="alert alert-warning" role="alert">
+                <strong>Atenção!</strong>
+                <p>Insira um arquivo .zip contendo todos os .html dentro dele.</p>
+            </div>
+            @endif
         </div>
     </div>
 @endsection

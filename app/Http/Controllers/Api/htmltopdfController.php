@@ -87,7 +87,7 @@ class htmltopdfController extends Controller
         $item->status = -1;
         $item->file_name = $file->getClientOriginalName();
         $item->user_id = Auth::id();
-        var_dump($item->save());
+        $item->save();
 
         // Return hash info
         $item = htmltopdf_queue::where('hash',$hash)->first();

@@ -1,7 +1,7 @@
 <p align="center">
-<a href="https://packagist.org/packages/sandrobocon/2pdf"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/sandrobocon/2pdf"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/sandrobocon/2pdf"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<a href="https://packagist.org/packages/sandrobocon/2pdf"><img src="https://poser.pugx.org/sandrobocon/2pdf/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/sandrobocon/2pdf"><img src="https://poser.pugx.org/sandrobocon/2pdf/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/sandrobocon/2pdf"><img src="https://poser.pugx.org/sandrobocon/2pdf/license.svg" alt="License"></a>
 </p>
 
 ## About 2PDF
